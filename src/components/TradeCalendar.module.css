@@ -1,0 +1,151 @@
+.wrap { font-family: var(--font-mono); }
+
+/* ── Toolbar ── */
+.toolbar {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 18px; flex-wrap: wrap;
+}
+.navBtn {
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+}
+.navBtn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+.navBtn:active { transform: scale(0.94); }
+
+.monthLabel {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em;
+  color: var(--text-primary);
+  min-width: 150px; text-align: center;
+}
+
+.yearSelect {
+  margin-left: auto;
+  background: var(--bg-input); border: 1px solid var(--border);
+  border-radius: 9px; color: var(--text-primary);
+  padding: 6px 10px; font-size: 0.82rem; font-weight: 600;
+  cursor: pointer;
+}
+.todayBtn {
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  border-radius: 9px; color: var(--text-secondary);
+  padding: 6px 12px; font-size: 0.78rem; font-weight: 700;
+  transition: all 0.15s ease;
+}
+.todayBtn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Month summary strip ── */
+.summaryStrip {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin-bottom: 16px;
+}
+.summaryChip {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+.summaryChipLabel { font-size: 0.63rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 3px; }
+.summaryChipVal { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
+
+/* ── Weekday header ── */
+.weekHeader {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 6px; margin-bottom: 6px;
+}
+.weekDay {
+  text-align: center; font-size: 0.68rem; font-weight: 700;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px;
+  padding: 4px 0;
+}
+
+/* ── Grid ── */
+.grid { display: flex; flex-direction: column; gap: 6px; }
+.weekRow { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+
+.cell {
+  min-height: 66px;
+  border-radius: 12px;
+  padding: 7px 8px;
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+}
+.cellEmpty { border-color: transparent; background: transparent; }
+.cellWin  { background: var(--win-bg); }
+.cellLoss { background: var(--loss-bg); }
+.cellBE   { background: rgba(245, 158, 11, 0.08); }
+.cellClickable { cursor: pointer; }
+.cellClickable:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-sm);
+}
+.cellToday { border: 2px solid var(--accent); }
+
+.cellWeekTall { min-height: 130px; }
+.cellNoTrades { font-size: 0.68rem; color: var(--text-muted); margin-top: 6px; }
+
+/* ── Year view ── */
+.yearGrid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.monthCard {
+  border-radius: 14px;
+  padding: 14px 14px 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.monthCardName {
+  font-family: var(--font-display); font-weight: 700; font-size: 0.85rem;
+  color: var(--text-primary); margin-bottom: 8px;
+}
+
+.cellDayNum {
+  font-size: 0.72rem; font-weight: 700; color: var(--text-secondary);
+  margin-bottom: 3px;
+}
+.cellDayNumToday { color: var(--accent); }
+
+.cellPnl { font-size: 0.68rem; font-weight: 800; line-height: 1.15; }
+.cellCount { font-size: 0.6rem; color: var(--text-muted); margin-top: 1px; }
+
+.cellDot {
+  position: absolute; bottom: 6px; right: 7px;
+  width: 6px; height: 6px; border-radius: 50%;
+}
+
+/* Thin heat bar along the bottom of a cell, scaled to how big the day's P&L is */
+.cellBar {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+  border-radius: 0 0 12px 12px;
+}
+
+/* ── Legend ── */
+.legend {
+  display: flex; gap: 18px; margin-top: 16px; flex-wrap: wrap;
+  align-items: center;
+}
+.legendItem { display: flex; align-items: center; gap: 6px; }
+.legendSwatch { width: 10px; height: 10px; border-radius: 3px; opacity: 0.9; }
+.legendLabel { font-size: 0.74rem; color: var(--text-muted); font-family: var(--font-body); }
+.legendHint {
+  margin-left: auto; font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-body); display: flex; align-items: center; gap: 5px;
+}
+
+@media (max-width: 640px) {
+  .summaryStrip { grid-template-columns: repeat(2, 1fr); }
+  .cell { min-height: 54px; }
+  .legendHint { display: none; }
+  .yearGrid { grid-template-columns: repeat(2, 1fr); }
+}

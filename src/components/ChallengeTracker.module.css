@@ -1,0 +1,70 @@
+.wrap { display: flex; flex-direction: column; gap: 20px; }
+
+.header {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 18px 22px; animation: fadeIn 0.4s ease;
+}
+.phaseBadge {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; color: var(--text-primary);
+}
+.headerSub { font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px; }
+
+.healthBadge {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
+}
+.healthDot { width: 8px; height: 8px; border-radius: 50%; }
+.healthBadge.healthy { background: var(--win-bg); color: var(--success); }
+.healthBadge.healthy .healthDot { background: var(--success); box-shadow: 0 0 6px var(--success); }
+.healthBadge.warning { background: rgba(245, 158, 11, 0.12); color: var(--warning); }
+.healthBadge.warning .healthDot { background: var(--warning); box-shadow: 0 0 6px var(--warning); }
+.healthBadge.breached { background: var(--loss-bg); color: var(--danger); }
+.healthBadge.breached .healthDot { background: var(--danger); box-shadow: 0 0 6px var(--danger); animation: pulse 1.5s ease-in-out infinite; }
+
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px;
+}
+.gaugeCard {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 18px; animation: fadeIn 0.4s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+}
+.gaugeCard:hover { transform: translateY(-3px); border-color: var(--border-focus); }
+.gaugeTop { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.gaugeLabel { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
+.gaugeValue { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: var(--text-primary); }
+.gaugeValue.healthy { color: var(--success); }
+.gaugeValue.warning { color: var(--warning); }
+.gaugeValue.breached { color: var(--danger); }
+
+.gaugeTrack {
+  height: 8px; border-radius: 4px; background: var(--bg-hover); overflow: hidden;
+}
+.gaugeFill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+.gaugeFill.target { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.gaugeFill.healthy { background: var(--success); }
+.gaugeFill.warning { background: var(--warning); }
+.gaugeFill.breached { background: var(--danger); }
+
+.gaugeSub { margin-top: 8px; font-size: 0.78rem; color: var(--text-secondary); font-family: var(--font-mono); }
+
+.alertsBox {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; animation: fadeIn 0.4s ease;
+}
+.alertsTitle { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.alertRow {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 10px; font-size: 0.85rem; font-weight: 500;
+}
+.alertRow.ok { background: var(--win-bg); color: var(--success); }
+.alertRow.warning { background: rgba(245, 158, 11, 0.12); color: var(--warning); }
+.alertRow.breached { background: var(--loss-bg); color: var(--danger); }
+
+.emptyState {
+  background: var(--bg-card); border: 1px dashed var(--border); border-radius: 16px;
+  padding: 40px; text-align: center;
+}
+.emptyTitle { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+.emptySub { font-size: 0.85rem; color: var(--text-secondary); }

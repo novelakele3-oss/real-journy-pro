@@ -1,0 +1,15 @@
+.card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 20px; position: relative; overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeIn 0.4s ease;
+}
+.card:hover { transform: translateY(-4px); border-color: var(--border-focus); box-shadow: var(--shadow); }
+
+.top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.icon { display: flex; align-items: center; justify-content: center; color: var(--accent); opacity: 0.8; }
+.icon svg { width: 18px; height: 18px; }
+.value { font-family: var(--font-mono); font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+.success { color: var(--success); }
+.danger { color: var(--danger); }
+.label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
